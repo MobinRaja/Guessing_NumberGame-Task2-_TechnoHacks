@@ -1,0 +1,62 @@
+package calci;
+import java.util.*;
+
+class Hints {
+    void hint1() {
+        System.out.println("\nThe number is greater than 43 and less than 45");
+    }
+
+    void hint2() {
+        System.out.println("Subtract 56 from 100");
+    }
+
+    void hint3() {
+        System.out.println("The number is 44");
+    }
+}
+
+class GoldenNumber {
+    void guess() {
+        int goldenNum = 44;
+        int attempts = 3;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Number Guessing Game From 1 to 100");
+
+        while (attempts > 0) {
+            System.out.println("Enter your guess: ");
+            int num = sc.nextInt();
+
+            if (num <= 100 && num >= 1) {
+                if (num == goldenNum) {
+                    System.out.println("Congratulations! You've guessed the correct number: " + num);
+                    return;
+                } else {
+                    Hints hints = new Hints();
+                    switch (attempts) {
+                        case 3:
+                            hints.hint1();
+                            break;
+                        case 2:
+                            hints.hint2();
+                            break;
+                        case 1:
+                            hints.hint3();
+                            break;
+                    }
+                    attempts--;
+                }
+            } else {
+                System.out.println("Number is not valid");
+            }
+        }
+        System.out.println("Sorry, you've run out of attempts. The correct number was: " + goldenNum);
+    }
+}
+
+public class guessing_number {
+    public static void main(String[] args) {
+        GoldenNumber game = new GoldenNumber();
+        game.guess();
+    }
+}
